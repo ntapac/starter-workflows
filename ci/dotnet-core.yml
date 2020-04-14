@@ -23,3 +23,7 @@ jobs:
       run: dotnet build --configuration Release --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+    - name: CreatePackage  
+      run: dotnet pack --configuration Release
+    - name: PublishPackage
+      run: dotnet nuget push "bin/Release/userInfoTypesSt.1.0.0.nupkg" --source "github"
